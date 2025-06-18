@@ -35,10 +35,37 @@ body {
     filter: blur(20px);
 }
 
-.circle1 { width: 300px; height: 300px; background: #0095f6; top: -50px; left: -50px; }
-.circle2 { width: 400px; height: 400px; background: #ff5e62; bottom: -100px; right: -100px;}
-.circle3 { width: 200px; height: 200px; background: #8e2de2; top: 30%; right: 10%;}
-.circle4 { width: 150px; height: 150px; background: #4CAF50; bottom: 20%; left: 15%;}
+.circle1 {
+    width: 300px;
+    height: 300px;
+    background: #0095f6;
+    top: -50px;
+    left: -50px;
+}
+
+.circle2 {
+    width: 400px;
+    height: 400px;
+    background: #ff5e62;
+    bottom: -100px;
+    right: -100px;
+}
+
+.circle3 {
+    width: 200px;
+    height: 200px;
+    background: #8e2de2;
+    top: 30%;
+    right: 10%;
+}
+
+.circle4 {
+    width: 150px;
+    height: 150px;
+    background: #4CAF50;
+    bottom: 20%;
+    left: 15%;
+}
 
 
 .sidebar {
@@ -69,6 +96,7 @@ body {
     padding: 8px 0;
     cursor: pointer;
 }
+
 .sidebar-item-button {
     background: none;
     border: none;
@@ -76,15 +104,18 @@ body {
     font: inherit;
     cursor: pointer;
 }
-.sidebar-item:hover {
+
+a:hover {
     color: #0095f6;
+    transition: 0.2s ease-in;
 }
 
 .sidebar-item i {
     margin-right: 10px;
     font-size: 20px;
 }
-a{
+
+a {
     text-decoration: none;
     color: #262626;
 }
@@ -189,27 +220,43 @@ header {
     body {
         grid-template-columns: 200px 1fr;
     }
-    .post-image { height: 250px; }
+
+    .post-image {
+        height: 250px;
+    }
 }
 
 @media (max-width: 900px) {
-    .post-image { height: 200px; }
-    .posts-grid { gap: 15px; }
+    .post-image {
+        height: 200px;
+    }
+
+    .posts-grid {
+        gap: 15px;
+    }
 }
 
 @media (max-width: 768px) {
     body {
         grid-template-columns: 1fr;
     }
+
     .sidebar {
         display: none;
     }
-    header, .content {
+
+    header,
+    .content {
         grid-column: 1;
     }
 }
 
 @media (max-width: 600px) {
-    .content { padding: 20px 5%; }
-    .post-image { height: 150px; }
+    .content {
+        padding: 20px 5%;
+    }
+
+    .post-image {
+        height: 150px;
+    }
 }
