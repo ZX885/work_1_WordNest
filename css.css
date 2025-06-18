@@ -1,0 +1,65 @@
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-content {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+.overlay-media {
+    flex: 1;
+    background: #000;
+}
+
+.overlay-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay-info {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.username {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.caption {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.comments {
+    font-size: 14px;
+    color: #444;
+}
+
+.post-caption {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* 👈 максимум 3 строки */
+    -webkit-box-orient: vertical;
+    max-height: 4.5em;
+    /* подстраивается под высоту строки */
+}
