@@ -1,0 +1,77 @@
+/* ===============================
+   RESPONSIVE STYLES
+   =============================== */
+
+/* 📱 Mobile (up to 767px) */
+@media (max-width: 767px) {
+    body {
+        display: block;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+    }
+    .sidebar.show{
+        transform: translateX(0);
+    }
+
+    .burger{
+        display: inline-block;
+    }
+
+    header {
+        padding: 20px 5%;
+    }
+
+    .content {
+        margin-left: 0;
+        /* padding: 20px 5%; */
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        margin-left: 0;
+        padding: 20px 5%;
+    }
+}
+
+/* 💻 Tablet (768px – 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        grid-template-columns: 200px 1fr;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    header {
+        padding-left: 20px;
+    }
+
+    /* .content {
+        margin-left: 200px;
+        padding: 20px 7%;
+    } */
+
+    .posts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    footer {
+        margin-left: 200px;
+        padding: 20px 7%;
+    }
+}
+
+/* 🖥️ Large Screens (1200px and up) */
+@media (min-width: 1200px) {
+    .posts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}

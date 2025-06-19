@@ -63,3 +63,14 @@
     max-height: 4.5em;
     /* подстраивается под высоту строки */
 }
+
+@media(max-width: 768px) {
+    .overlay-content {
+        flex-direction: column;
+    }
+
+    .overlay-media,
+    .overlay-info {
+        width: 100%;
+    }
+}

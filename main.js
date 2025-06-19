@@ -53,3 +53,7 @@ document.getElementById("post-overlay").addEventListener("click", () => {
 document.querySelector(".overlay-content").addEventListener("click", (e) => {
     e.stopPropagation();
 });
+
+function toggleSidebar(){
+    document.querySelector('.sidebar').classList.toggle('show')
+}
