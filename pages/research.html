@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>WordNest</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="adapt.css">
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/adapt.css">
+    <link rel="stylesheet" href="../styles/search.css">
 </head>
 
 <body>
+    <div class="background"></div>
+    <div class="decoration circle1"></div>
+    <div class="decoration circle2"></div>
+    <div class="decoration circle3"></div>
+    <div class="decoration circle4"></div>
+
     <div class="sidebar">
         <div class="sidebar-section">
             <div class="sidebar-title">Menu</div>
@@ -21,19 +27,19 @@
                     Home
                 </div>
             </a>
-            <a href="/">
+            <a href="">
                 <div class="sidebar-item"><i class="fas fa-compass"></i>
                     <!-- <fmt:message key="page.home.research" /> -->
                     Research
                 </div>
             </a>
-            <a href="/">
+            <a href="notification.html">
                 <div class="sidebar-item"><i class="fas fa-bell"></i>
                     <!-- <fmt:message key="page.home.notifications" /> -->
                     Notifications
                 </div>
             </a>
-            <a href="/">
+            <a href="messages.html">
                 <div class="sidebar-item"><i class="fas fa-envelope"></i>
                     <!-- <fmt:message key="page.home.messages" /> -->
                     Messages
@@ -44,19 +50,19 @@
         <div class="sidebar-section">
             <div class="sidebar-title">News</div>
 
-            <a href="/">
+            <a href="trends.html">
                 <div class="sidebar-item"><i class="fas fa-newspaper"></i>
                     <!-- <fmt:message key="page.home.trends" /> -->
                     Trends
                 </div>
             </a>
-            <a href="/">
+            <a href="recommendation.html">
                 <div class="sidebar-item"><i class="fas fa-users"></i>
                     <!-- <fmt:message key="page.home.recommendations" /> -->
                     Recommendations
                 </div>
             </a>
-            <a href="/">
+            <a href="popular.html">
                 <div class="sidebar-item"><i class="fas fa-star"></i>
                     <!-- <fmt:message key="page.home.popular" /> -->
                     Popular
@@ -67,26 +73,22 @@
         <div class="sidebar-section">
             <div class="sidebar-title">Profile</div>
 
-            <a href="">
+            <a href="../profile.html">
                 <div class="sidebar-item">
-                    <form action="${pageContext.request.contextPath}/profile" method="get" class="sidebar-item-form">
-                        <button type="submit" class="sidebar-item-button">
-                            <i class="fas fa-user"></i>
-                            <!-- <fmt:message key="page.home.profile" /> -->
-                            Profile
-                        </button>
-                    </form>
+                    <button type="submit" class="sidebar-item-button">
+                        <i class="fas fa-user"></i>
+                        <!-- <fmt:message key="page.home.profile" /> -->
+                        Profile
+                    </button>
                 </div>
             </a>
-            <a href="/">
+            <a href="settings.html">
                 <div class="sidebar-item">
-                    <form action="${pageContext.request.contextPath}/settings" method="get" class="sidebar-item-form">
-                        <button type="submit" class="sidebar-item-button">
-                            <i class="fas fa-cog"></i>
-                            <!-- <fmt:message key="page.home.settings" /> -->
-                            Settings
-                        </button>
-                    </form>
+                    <button type="submit" class="sidebar-item-button">
+                        <i class="fas fa-cog"></i>
+                        <!-- <fmt:message key="page.home.settings" /> -->
+                        Settings
+                    </button>
                 </div>
             </a>
             <a href="/">
@@ -108,47 +110,59 @@
             <div class="header-container">
                 <button class="burger" onclick="toggleSidebar()">☰</button>
                 <div class="logo">
-                    <img src="img.jpg" alt="Logo" style="height:24px; vertical-align:middle; margin-right:10px;">
+                    <img src="../img.jpg" alt="Logo" style="height:24px; vertical-align:middle; margin-right:10px;">
                     WordNest
                 </div>
                 <div class="nav-buttons">
-                    <button class="nav-button" onclick="navigateTo('home.html')">main</button>
-                    <button class="nav-button" onclick="navigateTo('profile.html')">subscribes</button>
-                    <button class="nav-button" onclick="navigateTo('create.html')">my profile</button>
+                    <a href="index.html"><button class="nav-button">Home</button></a>
+                    <a href="create.html"><button class="nav-button">Create post</button></a>
+                    <a href="profile.html"><button class="nav-button">My profile</button></a>
                 </div>
             </div>
         </header>
-        <div class="profile-container">
-            <img src="profile.js" alt="Profile" class="profile-picture" id="profilePreview">
-            <div class="profile-info">
-                <h2 id="displayName">John Doe</h2>
-                <p id="displayUsername">@johndoe</p>
-            </div>
 
-            <form class="profile-form" id="profileForm">
-                <label for="fname">First Name</label>
-                <input required type="text" id="fname" name="fname" placeholder="John">
-
-                <label for="lname">Last Name</label>
-                <input required type="text" id="lname" name="lname" placeholder="Doe">
-
-                <label for="gender">Gender</label>
-                <input required type="text" id="gender" name="gender" placeholder="Male">
-
-                <label for="age">Age</label>
-                <input required type="number" id="age" name="age" placeholder="30">
-
-                <label for="photo">Profile Photo</label>
-                <input required type="file" id="photo" name="photo" accept="image/*">
-                <button type="button" onclick="saveProfile()" style="cursor: pointer;;margin-top: 20px; padding: 10px 20px; border: none; background: #0095f6; color: white; border-radius: 5px;">Save</button>
+        <div class="search-container">
+            <h2>Поиск ......</h2>
+            <form class="search-box" onsubmit="performSearch(event)">
+                <input type="text" id="searchInput" placeholder="Нажмите для поиска...">
+                <button type="submit">Найти</button>
             </form>
-
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
         </div>
+        <div class="post-grid">
+            <div class="results" id="results">
+
+            </div>
+
+        </div>
+
     </main>
-    <script src="profile.js"></script>
+
+    <script>
+        function performSearch(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value.trim();
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+            if (!query) return;
+
+            // Dummy results for template purposes
+            const резултаты = [
+                'Машины',
+                'Посты',
+                'Еда',
+                'Исследование',
+                'Работа'
+            ];
+
+            резултаты.filter(item => item.toLowerCase().includes(query.toLowerCase()))
+                .forEach(result => {
+                    const div = document.createElement('div');
+                    div.className = 'result-item';
+                    div.textContent = result;
+                    results.appendChild(div);
+                });
+        }
+    </script>
 
 </body>
 

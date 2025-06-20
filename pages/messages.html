@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>WordNest</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/adapt.css">
+    <link rel="stylesheet" href="../styles/message.css">
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="decoration circle1"></div>
+    <div class="decoration circle2"></div>
+    <div class="decoration circle3"></div>
+    <div class="decoration circle4"></div>
+
+    <div class="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-title">Menu</div>
+            <a href="index.html">
+                <div class="sidebar-item"><i class="fas fa-home"></i>
+                    <!-- <fmt:message key="page.home.home" /> -->
+                    Home
+                </div>
+            </a>
+            <a href="research.html">
+                <div class="sidebar-item"><i class="fas fa-compass"></i>
+                    <!-- <fmt:message key="page.home.research" /> -->
+                    Research
+                </div>
+            </a>
+            <a href="notification.html">
+                <div class="sidebar-item"><i class="fas fa-bell"></i>
+                    <!-- <fmt:message key="page.home.notifications" /> -->
+                    Notifications
+                </div>
+            </a>
+            <a href="">
+                <div class="sidebar-item"><i class="fas fa-envelope"></i>
+                    <!-- <fmt:message key="page.home.messages" /> -->
+                    Messages
+                </div>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">News</div>
+
+            <a href="trends.html">
+                <div class="sidebar-item"><i class="fas fa-newspaper"></i>
+                    <!-- <fmt:message key="page.home.trends" /> -->
+                    Trends
+                </div>
+            </a>
+            <a href="recommendation.html">
+                <div class="sidebar-item"><i class="fas fa-users"></i>
+                    <!-- <fmt:message key="page.home.recommendations" /> -->
+                    Recommendations
+                </div>
+            </a>
+            <a href="popular.html">
+                <div class="sidebar-item"><i class="fas fa-star"></i>
+                    <!-- <fmt:message key="page.home.popular" /> -->
+                    Popular
+                </div>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">Profile</div>
+
+            <a href="profile.html">
+                <div class="sidebar-item">
+                    <button type="submit" class="sidebar-item-button">
+                        <i class="fas fa-user"></i>
+                        <!-- <fmt:message key="page.home.profile" /> -->
+                        Profile
+                    </button>
+                </div>
+            </a>
+            <a href="settings.html">
+                <div class="sidebar-item">
+                    <button type="submit" class="sidebar-item-button">
+                        <i class="fas fa-cog"></i>
+                        <!-- <fmt:message key="page.home.settings" /> -->
+                        Settings
+                    </button>
+                </div>
+            </a>
+            <a href="/">
+                <div class="sidebar-item">
+                    <form action="${pageContext.request.contextPath}/logout" method="post" class="sidebar-item-form">
+                        <button type="submit" class="sidebar-item-button">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <!-- <fmt:message key="page.home.logout" /> -->
+                            Log out
+                        </button>
+                    </form>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <main class="content">
+        <header>
+            <div class="header-container">
+                <button class="burger" onclick="toggleSidebar()">☰</button>
+                <div class="logo">
+                    <img src="../img.jpg" alt="Logo" style="height:24px; vertical-align:middle; margin-right:10px;">
+                    WordNest
+                </div>
+                <div class="nav-buttons">
+                    <a href="index.html"><button class="nav-button">Home</button></a>
+                    <a href="create.html"><button class="nav-button">Create post</button></a>
+                    <a href="profile.html"><button class="nav-button">My profile</button></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="messages-container">
+            <div class="dialog-list">
+                <div class="dialog-item" onclick="openChat('Alice')">Alice</div>
+                <div class="dialog-item" onclick="openChat('Bob')">Bob</div>
+                <div class="dialog-item" onclick="openChat('Charlie')">Charlie</div>
+            </div>
+            <div class="chat-box">
+                <div class="chat-header" id="chatHeader">Select a chat</div>
+                <div class="messages-area" id="messagesArea"></div>
+                <form class="send-message" onsubmit="sendMessage(event)">
+                    <input type="text" id="messageInput" placeholder="Type your message...">
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        let currentUser = '';
+        function openChat(user) {
+            currentUser = user;
+            document.getElementById('chatHeader').innerText = 'Chat with ' + user;
+            document.getElementById('messagesArea').innerHTML = `
+        <div class="message them">Hi, this is ${user}!</div>
+        <div class="message you">Hello ${user}!</div>
+      `;
+        }
+
+        function sendMessage(event) {
+            event.preventDefault();
+            const input = document.getElementById('messageInput');
+            const text = input.value.trim();
+            if (!text) return;
+            const msg = document.createElement('div');
+            msg.className = 'message you';
+            msg.textContent = text;
+            document.getElementById('messagesArea').appendChild(msg);
+            input.value = '';
+        }
+    </script>
+
+</body>
+
+</html>
